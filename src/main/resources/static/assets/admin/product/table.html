@@ -1,0 +1,48 @@
+<div class="card" ng-if = "items">
+    <div class="card-header">
+        Product Edition
+    </div>
+    <div class="card-body">
+        <table class="table table-header">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Date</th>
+                <th>Image</th>
+                <th>Category</th>
+                <th>Available ?</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat = "p in pager.items">
+                <td>{{p.id}}</td>
+                <td>{{p.name}}</td>
+                <td>{{p.price | number:2}}</td>
+                <td>{{p.createDate | date : 'dd-MM-yyyy'}}</td>
+                <td>{{p.image}}</td>
+                <td>{{p.category.name}}</td>
+                <td>{{p.available ? 'Yes' : 'No'}}</td>
+                <td>
+                    <button
+                            ng-click = "edit(p)"
+                            class="btn btn-warning">Edit</button>
+                    <button class="btn btn-danger" ng-click = "delete(item)">Delete</button>
+                </td>
+            </tr>
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <div class="card-footer text-center">
+        <button class="btn btn-primary" ng-click = "pager.first()">First</button>
+        <button class="btn btn-success" ng-click = "pager.prev()">Previous</button>
+        <button class="btn">{{pager.page + 1}} of {{pager.count}}</button>
+        <button class="btn btn-danger" ng-click = "pager.next()">Next</button>
+        <button class="btn btn-info" ng-click = "pager.last()">Last</button>
+    </div>
+</div>
